@@ -28,6 +28,7 @@ public class ManageCallBehaviour extends Behaviour {
     private Request lastBestRequest;
     private final ArrayList<Request> biddingList = new ArrayList<>();
     private ArrayList<AID> taxiInThisRound = new ArrayList<>();
+    private boolean actionSucceed = true;
 
     public ManageCallBehaviour(TaxiCoordinator coordinator) {
         agent = coordinator;
@@ -48,7 +49,7 @@ public class ManageCallBehaviour extends Behaviour {
             }
 
             // 2 . Waiting for next call
-            if (activity == Activity.WAITING_FOR_CALLS) {
+            if (activity == Activity.WAITING_FOR_CALLS && actionSucceed) {
                 if (agent.isCallAvailable(agent.nextTime, agent.runtime.getDate())) {
                     // 3. Pick Random Node but not taxi center
                     int[] exclude = {agent.vCity.taxiCenter};
@@ -133,8 +134,8 @@ public class ManageCallBehaviour extends Behaviour {
                             System.out.println("Cannont find sender");
                             System.exit(1);
                         }
-                        System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? response.bid.payOff : 0) + " NT");
                         // This is an offer
+                        System.out.println("(" + agent.runtime.toString() + ") Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? response.bid.payOff : 0) + " NT");
 
                         assert response != null;
                         response.bidder = reply.getSender();
@@ -166,11 +167,18 @@ public class ManageCallBehaviour extends Behaviour {
                 }
 
                 if (bestTaxi == null) {
-                    // TODO fix this...
+                    /** TODO fix this...
+                     * this often starts a non-stop loop do to the state of taxi...
+                     * @Link Taxi.checkStatus
+                     * I would suggest that we add a state called Activity.NOT_ON_DUTY to show
+                     * that the taxi is simply not on duty instead of some other reasons,
+                     * and force wake up a taxi under some method
+                    */
                     System.out.println("Cannot find best taxi, all taxis are busy...\nLet's send the request" +
                             " to all the taxis again...");
                     activity = Activity.WAITING_FOR_CALLS;
-                    System.exit(1);
+                    actionSucceed = false;
+                    //System.exit(1);
                     break;
                 } else
                     System.out.println("(" + agent.runtime.toString() + " Bid won by " + bestTaxi.getLocalName() + " : " + bestPrice);
@@ -191,6 +199,7 @@ public class ManageCallBehaviour extends Behaviour {
                         MessageTemplate.MatchInReplyTo(order.getReplyWith()));
 
                 activity = Activity.WAITING_TAXI_CONFIRMATION;
+                actionSucceed = true;
                 //SEND MESSAGE TO CONFIRM BID ACCEPTED
                 break;
             case WAITING_TAXI_CONFIRMATION:

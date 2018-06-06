@@ -14,4 +14,5 @@ public enum Activity {
     WAITING_FOR_JOB,
     JUST_WON_BID,
     WAITING_TAXI_CONFIRMATION,
+    NOT_ON_DUTY
 }
