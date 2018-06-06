@@ -13,12 +13,13 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * This class Handle the Call Generation and send the request to taxis for auction
  */
 public class ManageCallBehaviour extends Behaviour {
-    private AID bestTaxi; // The agent who provides the best offer
+    private AID bestTaxi = new AID(); // The agent who provides the best offer
     private double bestPrice; // The best offered price
     private int repliesCnt = 0; // The counter of replies from seller agents
     private MessageTemplate mt; // The template to receive replies
@@ -26,6 +27,7 @@ public class ManageCallBehaviour extends Behaviour {
     private final TaxiCoordinator agent;
     private Request lastBestRequest;
     private final ArrayList<Request> biddingList = new ArrayList<>();
+    private ArrayList<AID> taxiInThisRound = new ArrayList<>();
 
     public ManageCallBehaviour(TaxiCoordinator coordinator) {
         agent = coordinator;
@@ -70,7 +72,7 @@ public class ManageCallBehaviour extends Behaviour {
                     agent.out("Call " + intersection.index);
 
                     // Send Request to available taxi
-                    agent.lastRequest = new Request(agent.vCity.intersections.get(nextIndex), new DropoffPoint(agent.vCity.dropoffPoints.get(destination).index), agent.calls);
+                    agent.lastRequest = new Request(agent.vCity.intersections.get(nextIndex), new Intersection(agent.vCity.dropoffPoints.get(destination).index), agent.calls);
                     sentRequest();
 
                     // 6. Set next Time to call. ONly if step is 0 that means that is waiting for call
@@ -87,9 +89,10 @@ public class ManageCallBehaviour extends Behaviour {
     }
 
     private void sentRequest() {
-
+        //System.out.println(activity.toString());
         switch (activity) {
             case WAITING_FOR_CALLS:
+                //bestTaxi = new AID();
                 // Send the cfp to all sellers
                 System.out.println("(" + agent.runtime.toString() + ")  Sending request to all agents");
                 ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
@@ -126,6 +129,10 @@ public class ManageCallBehaviour extends Behaviour {
                         } catch (IOException | ClassNotFoundException e) {
                             e.printStackTrace();
                         }
+                        if (reply.getSender() == null) {
+                            System.out.println("Cannont find sender");
+                            System.exit(1);
+                        }
                         System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? response.bid.payOff : 0) + " NT");
                         // This is an offer
 
@@ -133,13 +140,19 @@ public class ManageCallBehaviour extends Behaviour {
                         response.bidder = reply.getSender();
                         biddingList.add(response);
                     } else {
+                        if (reply.getSender() == null) {
+                            System.out.println("Cannont find sender");
+                            System.exit(1);
+                        }
                         System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent() + " NT");
                     }
                     repliesCnt++;
                     if (repliesCnt >= agent.lstTaxi.size()) {
-                        processBids();
-                        // We received all replies
-                        activity = Activity.PROCESSING_BIDS;
+                        boolean bargainResult = processBids();
+                        if (bargainResult) // We received all replies
+                            activity = Activity.PROCESSING_BIDS;
+                        else
+                            activity = Activity.WAITING_FOR_CALLS;
                     }
                 } else {
                     block();
@@ -151,7 +164,17 @@ public class ManageCallBehaviour extends Behaviour {
                     Thread.sleep(5);
                 } catch (Exception ignored) {
                 }
-                System.out.println("(" + agent.runtime.toString() + ")  Bid won by " + bestTaxi.getLocalName() + " : " + bestPrice);
+
+                if (bestTaxi == null) {
+                    // TODO fix this...
+                    System.out.println("Cannot find best taxi, all taxis are busy...\nLet's send the request" +
+                            " to all the taxis again...");
+                    activity = Activity.WAITING_FOR_CALLS;
+                    System.exit(1);
+                    break;
+                } else
+                    System.out.println("(" + agent.runtime.toString() + " Bid won by " + bestTaxi.getLocalName() + " : " + bestPrice);
+
                 // Sending confirmation to taxi for best offer
                 ACLMessage order = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
                 order.addReceiver(bestTaxi);
@@ -194,7 +217,7 @@ public class ManageCallBehaviour extends Behaviour {
         }
     }
 
-    private void processBids() {
+    private Boolean processBids() {
         double lowestPayoff, secondLowestPayoff, lowestCo, secondLowestCo;
         lowestPayoff = secondLowestPayoff = Integer.MAX_VALUE;
         lowestCo = secondLowestCo = Integer.MAX_VALUE;
@@ -206,7 +229,7 @@ public class ManageCallBehaviour extends Behaviour {
                 lowestCo = r.bid.company;
                 bestTaxi = r.bidder;
                 lastBestRequest = r;
-            } else if (r.bid.payOff < secondLowestPayoff && r.bid.payOff != lowestPayoff) {
+            } else if (r.bid.payOff < secondLowestPayoff && r.bid.payOff != lowestPayoff && r.bid.payOff >= 0) {
                 secondLowestPayoff = r.bid.payOff;
                 secondLowestCo = r.bid.company;
             }
@@ -226,12 +249,24 @@ public class ManageCallBehaviour extends Behaviour {
             secondLowestPayoff = lowestPayoff;
         }
 
+        if (lastBestRequest == null) {
+            // TODO fix this...
+            System.out.println("Cannot find best response, let's go back and ask all the taxis again...");
+            activity = Activity.WAITING_FOR_CALLS;
+            System.exit(1);
+            return false;
+        }
+
         lastBestRequest.bid.company = 0.3 * (secondLowestCo - secondLowestPayoff);
-        lastBestRequest.bid.payOff = secondLowestPayoff - lastBestRequest.bid.company;
+        // TODO figure out why payoff calculated like this
+        //lastBestRequest.bid.payOff = secondLowestPayoff - lastBestRequest.bid.company;
 
         lastBestRequest.bidder = bestTaxi;
         bestPrice = lastBestRequest.bid.payOff;
         biddingList.clear();
+
+        // if the process is successful, return true
+        return true;
     }
 
     public boolean done() {

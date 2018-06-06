@@ -1,7 +1,7 @@
 package behaviour;
 
 import agents.Taxi;
-import city.DropoffPoint;
+import city.Intersection;
 import city.Passenger;
 import city.Request;
 import jade.core.behaviours.Behaviour;
@@ -29,7 +29,7 @@ class ProcessRequestsBehaviour extends Behaviour {
             this.agent.confirmed_request = this.request;
             this.agent.currentPassenger = passenger;
             this.agent.destination = this.request.destination;
-            this.agent.addBehaviour(new LocationBehaviour(new DropoffPoint(this.agent.currentLocation.index), this.request.destination, this.agent, this.agent.runtime));
+            this.agent.addBehaviour(new LocationBehaviour(new Intersection(this.agent.currentLocation.index), this.request.destination, this.agent, this.agent.runtime));
             this.agent.confirmed_request = null;
             System.out.println("(" + agent.runtime.toString() + ") <--- Taxi " + agent.getLocalName() + ": Finished job for Passenger " + passenger.id);
         }

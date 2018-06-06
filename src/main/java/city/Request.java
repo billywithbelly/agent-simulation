@@ -9,15 +9,16 @@ import java.io.Serializable;
  */
 public class Request implements Serializable {
     public final Intersection origin;
-    public final DropoffPoint destination;
+    public final Intersection destination;
     public Bid bid;
     public final int passengerID;
     public AID bidder;
 
-    public Request(Intersection origin, DropoffPoint destination, int passengerID) {
+    public Request(Intersection origin, Intersection destination, int passengerID) {
         this.origin = origin;
         this.destination = destination;
         this.passengerID = passengerID;
+        this.bid = new Bid();
     }
 
 }

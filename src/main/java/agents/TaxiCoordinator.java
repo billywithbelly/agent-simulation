@@ -1,7 +1,10 @@
 package agents;
 
 import behaviour.ManageCallBehaviour;
-import city.*;
+import city.City;
+import city.Intersection;
+import city.Request;
+import city.Passenger;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.wrapper.AgentController;
@@ -106,7 +109,7 @@ public class TaxiCoordinator extends Agent {
      * @param taxiCenter
      * @return
      */
-    public int pickRandomDropoffIndex(ArrayList<DropoffPoint> dropoffPoints, int[] taxiCenter) {
+    public int pickRandomDropoffIndex(ArrayList<Intersection> dropoffPoints, int[] taxiCenter) {
         int index;
         do {
             index = StdRandom.uniform(0, dropoffPoints.size() - 1);
@@ -136,7 +139,7 @@ public class TaxiCoordinator extends Agent {
         return nextCall != null && nextCall.before(currentTime);
     }
 
-    private void addTaxi(DropoffPoint point, Shift shift) {
+    private void addTaxi(Intersection point, Shift shift) {
         Object[] params = {this.vCity, point, shift, totalTaxis + 1, runtime};
         ContainerController cc = getContainerController();
         String name;
@@ -153,13 +156,13 @@ public class TaxiCoordinator extends Agent {
 
     private void generateSampleTaxis() {
         for (int i = 1; i <= 4; i++) {
-            this.addTaxi(new DropoffPoint(this.vCity.taxiCenter), Shift.TIME_3AM_TO_1PM);
+            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_3AM_TO_1PM);
         }
         for (int i = 1; i <= 4; i++) {
-            this.addTaxi(new DropoffPoint(this.vCity.taxiCenter), Shift.TIME_6PM_TO_4AM);
+            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_6PM_TO_4AM);
         }
         for (int i = 1; i <= 4; i++) {
-            this.addTaxi(new DropoffPoint(this.vCity.taxiCenter), Shift.TIME_9AM_TO_7PM);
+            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_9AM_TO_7PM);
         }
     }
 

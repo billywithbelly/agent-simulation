@@ -23,6 +23,12 @@ public class Intersection implements Serializable{
         this.passengerHistory = new ArrayList<>();
     }
 
+    public Intersection(int index) {
+        this.index = index;
+        this.calls = 0;
+        this.passengerHistory = new ArrayList<>();
+    }
+
 
     public void receiveCall(Passenger passenger) {
         this.calls++;

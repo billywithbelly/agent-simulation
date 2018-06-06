@@ -1,7 +1,6 @@
 package utils.agentMethods;
 
 import city.City;
-import city.DropoffPoint;
 import city.Intersection;
 import city.Request;
 import org.junit.After;
@@ -36,9 +35,9 @@ public class TaxiMethodsTest {
     public void getJobDistance() throws Exception {
         double distance;
         double test_distance = 0;
-        DropoffPoint currentTaxiLocation = new DropoffPoint(vCity.intersections.get(StdRandom.uniform(0, vCity.dropoffPoints.size())).index);
+        Intersection currentTaxiLocation = new Intersection(vCity.intersections.get(StdRandom.uniform(0, vCity.dropoffPoints.size())).index);
         Intersection customerLocation = vCity.intersections.get(StdRandom.uniform(0, vCity.intersections.size()));
-        DropoffPoint customerDestination = new DropoffPoint(StdRandom.uniform(0, vCity.dropoffPoints.size()));
+        Intersection customerDestination = new Intersection(StdRandom.uniform(0, vCity.dropoffPoints.size()));
         Request confirmedRequest = new Request(customerLocation, customerDestination, 0);
 
         distance = TaxiMethods.getTotalTravelDistance(vCity, currentTaxiLocation, confirmedRequest);

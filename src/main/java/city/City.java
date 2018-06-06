@@ -30,7 +30,7 @@ public class City {
     public int totalPassengers = 0;
     public static double last_req_distance;
     public ArrayList<Intersection> intersections;
-    public ArrayList<DropoffPoint> dropoffPoints;
+    public ArrayList<Intersection> dropoffPoints;
     public ArrayList<Passenger> passengerArrayList;
     public static final HashMap<Integer, DijkstraUndirectedSP> pathLookup = new HashMap<>();
 
@@ -149,18 +149,18 @@ public class City {
      * @param G EdgeWeightedGraph.
      * @return an @ArrayList of @DropoffPoints
      */
-    public ArrayList<DropoffPoint> extractDropoffPoints(EdgeWeightedGraph G) {
+    public ArrayList<Intersection> extractDropoffPoints(EdgeWeightedGraph G) {
         Iterable<Edge> adj = G.edges();
-        ArrayList<DropoffPoint> list = new ArrayList<>();
+        ArrayList<Intersection> list = new ArrayList<>();
         HashMap seen = new HashMap();
 
-        DropoffPoint x = new DropoffPoint();
+        Intersection x = new Intersection();
         for (Edge e : adj) {
             x.index = e.other(e.either());
             if (seen.get(x.index) == null) {
                 list.add(x);
                 seen.put(x.index, x.index);
-                x = new DropoffPoint();
+                x = new Intersection();
             }
         }
         Collections.reverse(list);
@@ -283,7 +283,7 @@ public class City {
      * Prints the list of dropOffPoints
      */
     public void printDropoffPoints() {
-        for (DropoffPoint d : this.dropoffPoints) {
+        for (Intersection d : this.dropoffPoints) {
             StdOut.print(d.toString());
             StdOut.println();
         }

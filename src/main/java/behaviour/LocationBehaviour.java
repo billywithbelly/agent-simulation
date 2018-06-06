@@ -1,7 +1,7 @@
 package behaviour;
 
 import agents.Taxi;
-import city.DropoffPoint;
+import city.Intersection;
 import jade.core.behaviours.Behaviour;
 import utils.agentMethods.TaxiMethods;
 import utils.misc.Activity;
@@ -15,13 +15,13 @@ import utils.simulation.Timer;
  */
 class LocationBehaviour extends Behaviour {
     private final Taxi agent;
-    private final DropoffPoint destination;
+    private final Intersection destination;
     private final Timer timer;
     private double jobTime;
     private final int initTime;
 
 
-    public LocationBehaviour(DropoffPoint origin, DropoffPoint destination, Taxi taxi, Timer runtime) {
+    public LocationBehaviour(Intersection origin, Intersection destination, Taxi taxi, Timer runtime) {
         this.timer = runtime;
         this.initTime = TaxiMethods.timeToSecond(runtime.getDate());
         this.agent = taxi;

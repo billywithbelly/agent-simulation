@@ -18,8 +18,8 @@ import java.util.Calendar;
 public class Taxi extends Agent {
     private int index;
     public City vCity;
-    public DropoffPoint currentLocation;
-    public DropoffPoint destination;
+    public Intersection currentLocation;
+    public Intersection destination;
     private ArrayList<Passenger> passengerHistory;
     public Passenger currentPassenger;
     private Shift shift;
@@ -34,7 +34,7 @@ public class Taxi extends Agent {
     protected void setup() {
         Object[] args = getArguments();
         this.vCity = (City) args[0];
-        this.currentLocation = (DropoffPoint) args[1];
+        this.currentLocation = (Intersection) args[1];
         this.shift = (Shift) args[2];
         this.index = (Integer) args[3];
         this.runtime = (Timer) args[4];
@@ -131,7 +131,7 @@ public class Taxi extends Agent {
     public void testFunctionality() {
         Intersection customerLocation = vCity.intersections.get(1);
 
-        this.destination = new DropoffPoint(10);
+        this.destination = new Intersection(10);
         System.out.println("Taxi Index " + this.index);
         System.out.println("Current Taxi Location " + this.currentLocation.index);
         confirmed_request = new Request(customerLocation, this.destination, 0);

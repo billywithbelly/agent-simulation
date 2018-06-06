@@ -41,11 +41,11 @@ public class TaxiMethods {
      * &incomingRequest;
      *
      * @param vCity               City.
-     * @param currentTaxiLocation DropoffPoint
-     * @param incomingRequest     Request see {@link DropoffPoint}
+     * @param currentTaxiLocation Intersection
+     * @param incomingRequest     Request see {@link Intersection}
      * @return the distance
      */
-    private static double getChargeableDistance(City vCity, DropoffPoint currentTaxiLocation, DropoffPoint incomingRequest) {
+    private static double getChargeableDistance(City vCity, Intersection currentTaxiLocation, Intersection incomingRequest) {
         DijkstraUndirectedSP destination_sp = vCity.getShortestPaths(vCity.G, currentTaxiLocation.index);
         return destination_sp.distTo(incomingRequest.index);
     }
@@ -56,11 +56,11 @@ public class TaxiMethods {
      * from their current position &currentTaxiLocaiton; to &incomingRequest.destination.index;
      *
      * @param vCity               City.
-     * @param currentTaxiLocation DropoffPoint
+     * @param currentTaxiLocation Intersection
      * @param incomingRequest     Request see {@link Request}
      * @return the distance
      */
-    public static double getTotalTravelDistance(City vCity, DropoffPoint currentTaxiLocation, Request incomingRequest) {
+    public static double getTotalTravelDistance(City vCity, Intersection currentTaxiLocation, Request incomingRequest) {
         double distance = 0;
         // Return a shortest path graph with the current taxi location as source node
         DijkstraUndirectedSP pickup_sp = vCity.getShortestPaths(vCity.G, currentTaxiLocation.index);
@@ -80,11 +80,11 @@ public class TaxiMethods {
      *
      * @param vCity               City see {@link City}
      * @param taxi                Taxi see {@link Taxi}
-     * @param currentTaxiLocation DropoffPont see {@link DropoffPoint}
+     * @param currentTaxiLocation Intersection see {@Link Intersection}
      * @param incomingRequest     Request see {@link Request}
      * @return the bid
      */
-    public static Bid getBid(City vCity, Taxi taxi, DropoffPoint currentTaxiLocation, Request incomingRequest) {
+    public static Bid getBid(City vCity, Taxi taxi, Intersection currentTaxiLocation, Request incomingRequest) {
         Bid result = new Bid();
         double request_queue_time = 0;
         double total_dist = 0;
@@ -98,7 +98,7 @@ public class TaxiMethods {
         }
 
         total_dist += request_queue_time;
-        double chargeable_dist = getChargeableDistance(vCity, new DropoffPoint(incomingRequest.origin.index), incomingRequest.destination);
+        double chargeable_dist = getChargeableDistance(vCity, new Intersection(incomingRequest.origin.index), incomingRequest.destination);
 
 
         result.payOff = (chargeable_dist * CHARGE_RATE_PER_KILOMETER) - (total_dist * GAS_COST_PER_KILOMETER);
@@ -148,7 +148,7 @@ public class TaxiMethods {
      */
     public static int getJobCompletionTime(City vCity, Taxi taxi, Request incomingRequest) {
         double total_job_time = 0;
-        DropoffPoint terminus;
+        Intersection terminus;
         Request current_request = null;
 
         if (taxi.confirmed_request != null) {
@@ -181,8 +181,8 @@ public class TaxiMethods {
         In in = new In("src/main/resources/v_city.txt");
         City vCity = new City();
         vCity.generateCity(in, 0);
-        DropoffPoint currentLocation = new DropoffPoint(0);
-        DropoffPoint destination = new DropoffPoint(10);
+        Intersection currentLocation = new Intersection(0);
+        Intersection destination = new Intersection(10);
         Intersection customerLocation = vCity.intersections.get(1);
         Request confirmed_request = new Request(customerLocation, destination, 0);
 
