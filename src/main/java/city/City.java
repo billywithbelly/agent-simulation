@@ -292,9 +292,7 @@ public class City {
     @SuppressWarnings("ThrowablePrintedToSystemOut")
     public static Date getFileTime() {
         try {
-            In in = new In("src/main/resources/time.txt");
-
-            String s = in.readLine();
+            String s = "08:00:00";
             System.out.println(s);
 
             Date input = new SimpleDateFormat("HH:mm:ss").parse(s);

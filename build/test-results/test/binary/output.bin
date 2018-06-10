@@ -1,7 +1,7 @@
 @Test - testIsIntersection
 @Test - addPassenger
 @Test - extractIntersections
-èPassenger{origin=Intersection{calls=0, index=41, passengerHistory=[], connections=[40]}, destinationNode=101, d=3.5, route=Path{w=41, weight=3.5, v=101, list=[101-29 0.50000, 35-29 1.00000, 41-35 2.00000]}}@Test - setPassengerRoute
+åPassenger{origin=Intersection{calls=0, index=41, passengerHistory=[], connections=[40]}, destinationNode=42, d=1.5, route=Path{w=41, weight=1.5, v=42, list=[42-43 0.50000, 43-44 0.50000, 44-41 0.50000]}}@Test - setPassengerRoute
 @Test - extendGraph
 @Test - extractDropoffPoints
 4 For 07:00:00 call equal 3.0, so lambda equals 0.05
@@ -2326,12 +2326,12 @@
 @Test - getShortestPaths
 @Test - getRoutes
 	08:00:00
-4Wed Jun 06 08:00:00 CST 2018@Test - testTimeReading
+4Sun Jun 10 08:00:00 CST 2018@Test - testTimeReading
 @Test - generateCity
-A For 07:00:00 next call will be  at Thu Jan 01 07:10:25 CST 1970
-A For 15:00:00 next call will be  at Thu Jan 01 15:06:11 CST 1970
-A For 22:00:00 next call will be  at Fri Jan 02 01:43:54 CST 1970
-A For 24:00:00 next call will be  at Fri Jan 02 01:23:58 CST 1970
+A For 07:00:00 next call will be  at Thu Jan 01 07:11:50 CST 1970
+A For 15:00:00 next call will be  at Thu Jan 01 15:49:06 CST 1970
+A For 22:00:00 next call will be  at Thu Jan 01 22:56:59 CST 1970
+A For 24:00:00 next call will be  at Fri Jan 02 03:27:36 CST 1970
 @Test - testNextCall
 @Test - setTravelDistance
 @Test - nextCallMinutes
@@ -2343,7 +2343,7 @@
 @Test - testIsIntersection
 @Test - addPassenger
 @Test - extractIntersections
-ÖPassenger{origin=Intersection{calls=0, index=41, passengerHistory=[], connections=[40]}, destinationNode=62, d=1.0, route=Path{w=41, weight=1.0, v=62, list=[62-63 0.50000, 63-41 0.50000]}}@Test - setPassengerRoute
+ÖPassenger{origin=Intersection{calls=0, index=41, passengerHistory=[], connections=[40]}, destinationNode=51, d=2.5, route=Path{w=41, weight=2.5, v=51, list=[51-40 0.50000, 41-40 2.00000]}}@Test - setPassengerRoute
 @Test - extendGraph
  @Test - extractDropoffPoints
 !4 For 07:00:00 call equal 3.0, so lambda equals 0.05
@@ -2599,12 +2599,12 @@
 %@Test - getShortestPaths
 &@Test - getRoutes
 '	08:00:00
-'4Wed Jun 06 08:00:00 CST 2018@Test - testTimeReading
+'4Sun Jun 10 08:00:00 CST 2018@Test - testTimeReading
 (@Test - generateCity
-)A For 07:00:00 next call will be  at Thu Jan 01 07:34:55 CST 1970
-)A For 15:00:00 next call will be  at Thu Jan 01 15:41:47 CST 1970
-)A For 22:00:00 next call will be  at Thu Jan 01 22:36:16 CST 1970
-)A For 24:00:00 next call will be  at Fri Jan 02 00:26:08 CST 1970
+)A For 07:00:00 next call will be  at Thu Jan 01 07:38:50 CST 1970
+)A For 15:00:00 next call will be  at Thu Jan 01 15:09:33 CST 1970
+)A For 22:00:00 next call will be  at Thu Jan 01 22:02:03 CST 1970
+)A For 24:00:00 next call will be  at Fri Jan 02 00:41:51 CST 1970
 )@Test - testNextCall
 *@Test - nextCallMinutes
 +@Test - nextCallMinutes

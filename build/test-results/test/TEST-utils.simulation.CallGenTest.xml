@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="utils.simulation.CallGenTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2018-06-06T10:56:09" hostname="billywithbellys-MacBook-Pro.local" time="0.342">
+<testsuite name="utils.simulation.CallGenTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2018-06-10T13:38:15" hostname="billywithbellys-MacBook-Pro.local" time="0.408">
   <properties/>
-  <testcase name="nextCallMinutes" classname="utils.simulation.CallGenTest" time="0.001"/>
-  <testcase name="getLambda" classname="utils.simulation.CallGenTest" time="0.03"/>
-  <testcase name="getCallsPerHour" classname="utils.simulation.CallGenTest" time="0.029"/>
+  <testcase name="nextCallMinutes" classname="utils.simulation.CallGenTest" time="0.002"/>
+  <testcase name="getLambda" classname="utils.simulation.CallGenTest" time="0.044"/>
+  <testcase name="getCallsPerHour" classname="utils.simulation.CallGenTest" time="0.02"/>
+  <testcase name="nextCall" classname="utils.simulation.CallGenTest" time="0.0"/>
+  <testcase name="nextCallMinutes" classname="utils.simulation.CallGenTest" time="0.0"/>
+  <testcase name="getLambda" classname="utils.simulation.CallGenTest" time="0.024"/>
+  <testcase name="getCallsPerHour" classname="utils.simulation.CallGenTest" time="0.013"/>
   <testcase name="nextCall" classname="utils.simulation.CallGenTest" time="0.001"/>
-  <testcase name="nextCallMinutes" classname="utils.simulation.CallGenTest" time="0.001"/>
-  <testcase name="getLambda" classname="utils.simulation.CallGenTest" time="0.026"/>
-  <testcase name="getCallsPerHour" classname="utils.simulation.CallGenTest" time="0.007"/>
-  <testcase name="nextCall" classname="utils.simulation.CallGenTest" time="0.003"/>
   <system-out><![CDATA[@Test - nextCallMinutes
 @Test - nextCallMinutes
 @Test - getCallsPerHour

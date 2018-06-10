@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="city.PassengerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-06-06T10:56:09" hostname="billywithbellys-MacBook-Pro.local" time="0.078">
+<testsuite name="city.PassengerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-06-10T13:38:15" hostname="billywithbellys-MacBook-Pro.local" time="0.091">
   <properties/>
-  <testcase name="getTravelDistance" classname="city.PassengerTest" time="0.0"/>
+  <testcase name="getTravelDistance" classname="city.PassengerTest" time="0.001"/>
   <testcase name="getTravelDistance" classname="city.PassengerTest" time="0.0"/>
   <system-out><![CDATA[@Test - setTravelDistance
 @Test - setTravelDistance

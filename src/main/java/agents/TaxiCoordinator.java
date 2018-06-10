@@ -17,7 +17,10 @@ import utils.simulation.StdRandom;
 import utils.io.In;
 import utils.io.Out;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,32 +40,45 @@ public class TaxiCoordinator extends Agent {
         out.println(newLine);
     }
 
-    public void close() {
-        out.close();
-    }
-
-
     protected void setup() {
         In in = new In("src/main/resources/v_city.txt");
 
-        System.out.println("Init of file");
-        System.out.println("Create City");
+        System.out.println("Setup agent");
 
+        System.out.println("Generating City");
         vCity = new City();
         vCity.generateCity(in);
         passengerArrayList = new ArrayList<>();
 
+        // Starting timer
+        String s = "08:00:00";
+        Date input = null;
+        try {
+            input = new SimpleDateFormat("HH:mm:ss").parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(input);
 
-        System.out.println("Done creating city");
-        System.out.println("Total Nodes " + vCity.intersections.size());
-        System.out.println("Generate Random Call for one intersection");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, cal1.get(Calendar.HOUR));
+        cal.set(Calendar.MINUTE, cal1.get(Calendar.MINUTE));
+        cal.set(Calendar.SECOND, cal1.get(Calendar.SECOND));
 
-//        Timer runtime = new Timer(0,0,0,1); //Setting initial time
-        runtime = new Timer(City.getFileTime(), 1); //Setting initial time
+        runtime = new Timer(cal.getTime(), 1);
 
-        // 1. Setting a next call Time
-        generateSampleTaxis();
-        System.out.println("Setting next Call time");
+        // create taxis
+        for (int i = 1; i <= 4; i++) {
+            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_3AM_TO_1PM);
+        }
+        for (int i = 1; i <= 4; i++) {
+            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_6PM_TO_4AM);
+        }
+        for (int i = 1; i <= 4; i++) {
+            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_9AM_TO_7PM);
+        }
+
         nextTime = nextCall(runtime.getDate());
 
         addBehaviour(new ManageCallBehaviour(this));
@@ -152,18 +168,6 @@ public class TaxiCoordinator extends Agent {
             //taxiDrivers.add((Taxi)params[0]);
         } catch (StaleProxyException ex) {
             Logger.getLogger(TaxiCoordinator.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void generateSampleTaxis() {
-        for (int i = 1; i <= 4; i++) {
-            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_3AM_TO_1PM);
-        }
-        for (int i = 1; i <= 4; i++) {
-            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_6PM_TO_4AM);
-        }
-        for (int i = 1; i <= 4; i++) {
-            this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_9AM_TO_7PM);
         }
     }
 

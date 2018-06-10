@@ -3,24 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="daf20816-95ed-4110-82c6-1ef1ca278ee9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/agents/Taxi$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/agents/Taxi$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/agents/Taxi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/agents/Taxi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/BidBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/BidBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/CheckStateBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/CheckStateBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/LocationBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/LocationBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/PickupCustomerBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/PickupCustomerBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/ProcessRequestsBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/ProcessRequestsBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/city/Bid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/city/Bid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/city/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/city/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agents/Taxi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agents/Taxi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/BidBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/BidBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/CheckStateBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/CheckStateBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/utils/agentMethods/TaxiMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/utils/agentMethods/TaxiMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/utils/misc/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/utils/misc/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/utils/misc/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/utils/misc/Shift.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/utils/simulation/CallGen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/utils/simulation/CallGen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/PickupCustomerBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/PickupCustomerBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/ProcessRequestsBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/ProcessRequestsBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/city/Bid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/city/Bid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/city/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/city/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/misc/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/misc/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/misc/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/misc/Shift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/simulation/CallGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/simulation/CallGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/city/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/city/City.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/agentMethods/TaxiMethodsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/agentMethods/TaxiMethodsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/simulation/CallGenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/simulation/CallGenTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -49,11 +51,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Request.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/city/Request.java">
+      <file leaf-file-name="ManageCallBehaviour.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="211">
+              <caret line="250" column="31" lean-forward="true" selection-start-line="250" selection-start-column="31" selection-end-line="250" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaxiCoordinator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+              <folding>
+                <element signature="e#2538#2539#0" expanded="true" />
+                <element signature="e#2590#2591#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,44 +76,38 @@
       <file leaf-file-name="City.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/city/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="24">
+              <caret line="292" column="28" lean-forward="true" selection-start-line="292" selection-start-column="28" selection-end-line="292" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bid.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/city/Bid.java">
+      <file leaf-file-name="CityTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/city/CityTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+            <state relative-caret-position="207">
+              <caret line="168" column="9" lean-forward="true" selection-start-line="168" selection-start-column="9" selection-end-line="168" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckStateBehavior.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/CheckStateBehavior.java">
+      <file leaf-file-name="MessageTemplate.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/lang/acl/MessageTemplate.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="-2666">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Behaviour.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/behaviours/Behaviour.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="144" column="16" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
               <folding>
-                <element signature="e#495#496#0" expanded="true" />
-                <element signature="e#523#524#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Taxi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/agents/Taxi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="90" column="19" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
-              <folding>
-                <element signature="e#3990#3991#0" expanded="true" />
-                <element signature="e#4033#4034#0" expanded="true" />
-                <element signature="e#4821#4822#0" expanded="true" />
-                <element signature="e#4855#4856#0" expanded="true" />
+                <element signature="e#3771#3772#0" expanded="true" />
+                <element signature="e#3810#3811#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,36 +117,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ACL</find>
-      <find>getShitfStatus</find>
-      <find>Taxi taxi</find>
-      <find>(CHARGE_RATE_PER_KILOMETER - GAS_COST_PER_KILOMETER) * chargeable_dist;</find>
-      <find>bestTaxi</find>
-      <find>processBid</find>
-      <find>lastRequest</find>
-      <find>agent</find>
-      <find>cannot find</find>
-      <find>i have arrived</find>
-      <find>system.out.println</find>
-      <find>this is</find>
-      <find>bid won</find>
-      <find>taxiPayoffList</find>
-      <find>taxipayofflist</find>
-      <find>waiting_for_response</find>
-      <find>&lt;---</find>
-      <find>company</find>
-      <find>response.bid</find>
-      <find>taxi</find>
       <find>---&gt;</find>
       <find>reply from 4 :</find>
       <find>Just</find>
       <find>= activity.</find>
       <find>next</find>
       <find>reply from 4</find>
-      <find>cannot</find>
       <find>created</find>
       <find>try</find>
       <find>this is the</find>
+      <find>cannot</find>
+      <find>repliesCnt</find>
+      <find>askin</find>
+      <find>asking</find>
+      <find>bargainResult</find>
+      <find>size</find>
+      <find>biddingList</find>
+      <find>cann</find>
+      <find>cannot find best ta</find>
+      <find>Sendin</find>
+      <find>doneProcess</find>
+      <find>responseList</find>
+      <find>cannot</find>
+      <find>canno</find>
+      <find>dupli</find>
+      <find>totalcompan</find>
+      <find>totalCompanyPayoff</find>
+      <find>setup</find>
+      <find>getfin</find>
+      <find>%.2</find>
+      <find>runtime</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -443,15 +452,15 @@
         <option value="$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java" />
         <option value="$PROJECT_DIR$/src/main/java/behaviour/ProcessRequestsBehaviour.java" />
         <option value="$PROJECT_DIR$/src/main/java/behaviour/CheckStateBehavior.java" />
-        <option value="$PROJECT_DIR$/src/main/java/city/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/city/Bid.java" />
         <option value="$PROJECT_DIR$/src/main/java/agents/Taxi.java" />
         <option value="$PROJECT_DIR$/src/main/java/behaviour/BidBehaviour.java" />
-        <option value="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" />
-        <option value="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/misc/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/java/city/Request.java" />
+        <option value="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" />
+        <option value="$PROJECT_DIR$/src/main/java/city/City.java" />
+        <option value="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" />
       </list>
     </option>
   </component>
@@ -481,71 +490,14 @@
               <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
               <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
               <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="agents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="behaviour" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="city" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="agentMethods" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="misc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -735,60 +687,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/city/Intersection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/city/Passenger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/city/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="42" selection-start-line="10" selection-start-column="17" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/BidBehaviour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-711">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2520">
-          <caret line="186" column="21" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="21" />
-          <folding>
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="106" column="39" selection-start-line="106" selection-start-column="39" selection-end-line="106" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2565">
           <caret line="188" column="49" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
-          <folding>
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -862,10 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
-          <folding>
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -933,10 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-970">
           <caret line="154" column="25" lean-forward="true" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
-          <folding>
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,24 +898,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/city/Bid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/lang/acl/ACLMessage.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/city/City.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1053,17 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="247" column="29" lean-forward="true" selection-start-line="247" selection-start-column="12" selection-end-line="247" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/CheckStateBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1122,34 +991,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-          <folding>
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1559#1560#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/simulation/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="86" column="28" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
-          <folding>
-            <element signature="e#2538#2539#0" expanded="true" />
-            <element signature="e#2590#2591#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1161,10 +1008,103 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/CheckStateBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/city/Bid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/city/Request.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="276" column="15" selection-start-line="276" selection-start-column="15" selection-end-line="276" selection-end-column="15" />
+          <folding>
+            <element signature="e#10189#10190#0" expanded="true" />
+            <element signature="e#10216#10217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/behaviours/Behaviour.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="144" column="16" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
+          <folding>
+            <element signature="e#3771#3772#0" expanded="true" />
+            <element signature="e#3810#3811#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/lang/acl/MessageTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2666">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/Agent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="641" column="24" selection-start-line="641" selection-start-column="19" selection-end-line="641" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="250" column="31" lean-forward="true" selection-start-line="250" selection-start-column="31" selection-end-line="250" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/time.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+          <folding>
+            <element signature="e#2538#2539#0" expanded="true" />
+            <element signature="e#2590#2591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/city/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="292" column="28" lean-forward="true" selection-start-line="292" selection-start-column="28" selection-end-line="292" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/city/CityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="168" column="9" lean-forward="true" selection-start-line="168" selection-start-column="9" selection-end-line="168" selection-end-column="9" />
         </state>
       </provider>
     </entry>

@@ -7,14 +7,14 @@ import jade.core.AID;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import utils.misc.Activity;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * This class Handle the Call Generation and send the request to taxis for auction
@@ -34,7 +34,9 @@ public class ManageCallBehaviour extends Behaviour {
     private final ArrayList<Request> biddingList = new ArrayList<>();
     private ArrayList<AID> taxiInThisRound = new ArrayList<>();
     private boolean waiting_for_response = false;
-    private int totalCompanyPayoff = 0;
+    private double totalCompanyPayoff = 0.0;
+    private boolean doneProcess = true;
+    private Map<String, String> responseList = new HashMap<>();
 
     public ManageCallBehaviour(TaxiCoordinator coordinator) {
         agent = coordinator;
@@ -55,7 +57,7 @@ public class ManageCallBehaviour extends Behaviour {
             }
 
             // 2 . Waiting for next call
-            if (activity == Activity.WAITING_FOR_CALLS) {
+            if (activity == Activity.WAITING_FOR_CALLS && doneProcess) {
                 if (agent.isCallAvailable(agent.nextTime, agent.runtime.getDate())) {
                     // 3. Pick Random Node but not taxi center
                     int[] exclude = {agent.vCity.taxiCenter};
@@ -101,7 +103,8 @@ public class ManageCallBehaviour extends Behaviour {
             case WAITING_FOR_CALLS:
                 //bestTaxi = new AID();
                 // Send the cfp to all sellers
-                System.out.println("(" + agent.runtime.toString() + ")  Sending request to all agents");
+                if (doneProcess)
+                    System.out.println("(" + agent.runtime.toString() + ")  Sending request to all agents");
                 ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
                 for (int i = 0; i < agent.lstTaxi.size(); ++i) {
                     cfp.addReceiver(agent.lstTaxi.get(i));
@@ -124,6 +127,7 @@ public class ManageCallBehaviour extends Behaviour {
                 ACLMessage reply = agent.receive(mt);
                 Request response = null;
                 if (reply != null) {
+                    //System.out.println("replying from "+reply.getSender().getLocalName());
 
                     // Reply received
                     if (reply.getPerformative() == ACLMessage.PROPOSE) {
@@ -139,6 +143,7 @@ public class ManageCallBehaviour extends Behaviour {
                             System.out.println("Cannont find sender");
                             System.exit(1);
                         }
+
                         // This is an offer
                         System.out.println("(" + agent.runtime.toString() + ")  Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
 
@@ -150,10 +155,23 @@ public class ManageCallBehaviour extends Behaviour {
                             System.out.println("Cannont find sender");
                             System.exit(1);
                         }
-                        System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
-                        //System.out.println("this is the raw content="+reply.getContent());
+                        if (responseList.get(reply.getSender().getLocalName()) == null) {
+                            System.out.println("not yet caught response");
+                            System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                            responseList.put(reply.getSender().getLocalName(), reply.getContent());
+                        } else {
+                            if (responseList.get(reply.getSender().getLocalName()).equals(reply.getContent()))
+                                System.out.println("(" + agent.runtime.toString() + ")  reply duplicated");
+                            else {
+                                System.out.println("reply not caught");
+                                System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                                responseList.put(reply.getSender().getLocalName(), reply.getContent());
+                            }
+                        }
+                        //System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
                     }
                     repliesCnt++;
+                    //System.out.println("reply counts:"+repliesCnt);
                     if (repliesCnt >= agent.lstTaxi.size()) {
                         boolean bargainResult = processBids();
                         if (bargainResult) // We received all replies
@@ -173,30 +191,23 @@ public class ManageCallBehaviour extends Behaviour {
                 }
 
                 if (bestTaxi == null) {
-                    /** TODO fix this...
-                     * this often starts a non-stop loop do to the state of taxi...
-                     * @Link Taxi.checkStatus
-                     * I would suggest that we add a state called Activity.NOT_ON_DUTY to show
-                     * that the taxi is simply not on duty instead of some other reasons,
-                     * and force wake up a taxi under some method
-                    */
                     if (!waiting_for_response) {
                         System.out.println("Cannot find best taxi, all taxis are busy...\nLet's send the request" +
                                 " to all the taxis again...");
-                        System.out.println("Unable to get bid...\nLet's find the next passenger...");
+                        //System.out.println("Unable to get bid...\nLet's find the next passenger...");
                     }
 
                     activity = Activity.WAITING_FOR_CALLS;
-
-                    //
+                    waiting_for_response = true;
+                    doneProcess = false;
+                    /*
                     nextCall();
                     repliesCnt = 0;
                     bestPrice = 0;
                     bestTaxi = null;
                     activity = Activity.WAITING_FOR_CALLS;
                     System.out.println("(" + agent.runtime.toString() + ")  ");
-                    //
-                    //waiting_for_response = true;
+                    */
                     break;
                 } else {
                     waiting_for_response = false;
@@ -204,7 +215,8 @@ public class ManageCallBehaviour extends Behaviour {
                     taxiPayoffList[Integer.parseInt(bestTaxi.getLocalName())] += (int)taxiPayoff;
 
                     System.out.println("            TaxiPayoffList Array: " + Arrays.toString(taxiPayoffList));
-                    System.out.println("            Total company payoff: " + totalCompanyPayoff);
+                    System.out.println("            Total company payoff: " + String.format( "%.2f", totalCompanyPayoff));
+                    doneProcess = true;
                 }
                 // Sending confirmation to taxi for best offer
                 ACLMessage order = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
@@ -235,6 +247,7 @@ public class ManageCallBehaviour extends Behaviour {
                             bestPrice = 0;
                             bestTaxi = null;
                             activity = Activity.WAITING_FOR_CALLS;
+                            responseList.clear();
                             System.out.println("(" + agent.runtime.toString() + ")  ");
                             break;
                         case ACLMessage.DISCONFIRM:
