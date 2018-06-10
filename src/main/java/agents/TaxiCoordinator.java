@@ -144,7 +144,7 @@ public class TaxiCoordinator extends Agent {
         ContainerController cc = getContainerController();
         String name;
         try {
-            name = "smith" + totalTaxis++;
+            name = "Billy" + totalTaxis++;
             AgentController new_agent = cc.createNewAgent(name, "agents.Taxi", params);
             new_agent.start();
             lstTaxi.add(new AID(name, AID.ISLOCALNAME));
@@ -155,13 +155,13 @@ public class TaxiCoordinator extends Agent {
     }
 
     private void generateSampleTaxis() {
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 10; i++) {
             this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_3AM_TO_1PM);
         }
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 10; i++) {
             this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_6PM_TO_4AM);
         }
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 10; i++) {
             this.addTaxi(new Intersection(this.vCity.taxiCenter), Shift.TIME_9AM_TO_7PM);
         }
     }

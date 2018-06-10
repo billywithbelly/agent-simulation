@@ -1,5 +1,6 @@
 package behaviour;
 
+import agents.Taxi;
 import agents.TaxiCoordinator;
 import city.*;
 import jade.core.AID;
@@ -29,6 +30,7 @@ public class ManageCallBehaviour extends Behaviour {
     private final ArrayList<Request> biddingList = new ArrayList<>();
     private ArrayList<AID> taxiInThisRound = new ArrayList<>();
     private boolean actionSucceed = true;
+    private boolean waiting_for_response = false;
 
     public ManageCallBehaviour(TaxiCoordinator coordinator) {
         agent = coordinator;
@@ -174,15 +176,19 @@ public class ManageCallBehaviour extends Behaviour {
                      * that the taxi is simply not on duty instead of some other reasons,
                      * and force wake up a taxi under some method
                     */
-                    System.out.println("Cannot find best taxi, all taxis are busy...\nLet's send the request" +
-                            " to all the taxis again...");
+                    if (waiting_for_response) {
+                        System.out.println("Cannot find best taxi, all taxis are busy...\nLet's send the request" +
+                                " to all the taxis again...");
+                        System.out.println("Unable to get bid...\nLet's find the next passenger...");
+                    }
                     activity = Activity.WAITING_FOR_CALLS;
                     actionSucceed = false;
-                    //System.exit(1);
+                    waiting_for_response = true;
                     break;
-                } else
+                } else {
+                    waiting_for_response = false;
                     System.out.println("(" + agent.runtime.toString() + " Bid won by " + bestTaxi.getLocalName() + " : " + bestPrice);
-
+                }
                 // Sending confirmation to taxi for best offer
                 ACLMessage order = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
                 order.addReceiver(bestTaxi);
@@ -244,14 +250,18 @@ public class ManageCallBehaviour extends Behaviour {
             }
         }
 
+        // if bidding list is empty ---
         if (secondLowestCo == Integer.MAX_VALUE && lowestCo != Integer.MAX_VALUE)
             secondLowestCo = lowestCo;
         else
             secondLowestCo = 0;
+
         if (secondLowestPayoff == Integer.MAX_VALUE && lowestPayoff != Integer.MAX_VALUE)
             secondLowestPayoff = lowestPayoff;
         else
             secondLowestPayoff = 0;
+        // if bidding list is empty ---
+
 
         if ((secondLowestCo - secondLowestPayoff) <= 0) {
             secondLowestCo = lowestCo;
