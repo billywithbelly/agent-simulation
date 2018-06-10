@@ -30,7 +30,7 @@ public class TaxiCoordinator extends Agent {
     public City vCity;
     public Date nextTime = null;
     public int calls = 0;
-    private int totalTaxis = 0;
+    private int numOffTaxi = 0;
     public final ArrayList<AID> lstTaxi = new ArrayList<>(0);
     public Request lastRequest;
     private ArrayList<Passenger> passengerArrayList;
@@ -96,7 +96,7 @@ public class TaxiCoordinator extends Agent {
         intersection.receiveCall(passenger);
         this.passengerArrayList.add(passenger);
         this.vCity.passengerArrayList.add(passenger);
-        System.out.println("TaxiCoordinator: Received a call from Passenger " + passenger.id);
+        System.out.println("Received a call from Passenger " + passenger.id + "...");
     }
 
     public Date nextCall(Date currentTime) {
@@ -143,31 +143,22 @@ public class TaxiCoordinator extends Agent {
         return false;
     }
 
-    /**
-     * This method check if this Intersection should process a pending call
-     *
-     * @param nextCall    Date for next Call
-     * @param currentTime Date of current time
-     * @return true when there is a call to be trigger
-     * false is there is no pending call to specific intersection
-     */
+    // Check if this Intersection must be process a pending call
     public boolean isCallAvailable(Date nextCall, Date currentTime) {
         return nextCall != null && nextCall.before(currentTime);
     }
 
     private void addTaxi(Intersection point, Shift shift) {
-        Object[] params = {this.vCity, point, shift, totalTaxis + 1, runtime};
+        Object[] params = {this.vCity, point, shift, numOffTaxi + 1, runtime};
         ContainerController cc = getContainerController();
-        String name;
+
         try {
-            //name = "Billy" + totalTaxis++;
-            name = totalTaxis++ + "";
-            AgentController new_agent = cc.createNewAgent(name, "agents.Taxi", params);
+            numOffTaxi++;
+            AgentController new_agent = cc.createNewAgent(String.valueOf(numOffTaxi), "agents.Taxi", params);
             new_agent.start();
-            lstTaxi.add(new AID(name, AID.ISLOCALNAME));
-            //taxiDrivers.add((Taxi)params[0]);
+            lstTaxi.add(new AID(String.valueOf(numOffTaxi), AID.ISLOCALNAME));
         } catch (StaleProxyException ex) {
-            Logger.getLogger(TaxiCoordinator.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TaxiCoordinator.class.getName()).log(Level.WARNING, null, ex);
         }
     }
 

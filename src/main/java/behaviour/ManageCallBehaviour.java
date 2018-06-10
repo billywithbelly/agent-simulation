@@ -46,9 +46,8 @@ public class ManageCallBehaviour extends Behaviour {
         agent.nextTime = agent.nextCall(agent.runtime.getDate());
     }
 
-    @SuppressWarnings("InfiniteLoopStatement")
+    // This manager works like a FSM
     public void action() {
-        //noinspection InfiniteLoopStatement,InfiniteLoopStatement,InfiniteLoopStatement,InfiniteLoopStatement,InfiniteLoopStatement,InfiniteLoopStatement,InfiniteLoopStatement
         for (int t = 0; true; t++) {
             agent.runtime.tick();
             try {
@@ -56,10 +55,11 @@ public class ManageCallBehaviour extends Behaviour {
             } catch (Exception ignored) {
             }
 
-            // 2 . Waiting for next call
+            // Waiting for next call
             if (activity == Activity.WAITING_FOR_CALLS && doneProcess) {
-                if (agent.isCallAvailable(agent.nextTime, agent.runtime.getDate())) {
-                    // 3. Pick Random Node but not taxi center
+
+                if (agent.nextTime != null && agent.nextTime.before(agent.runtime.getDate())) {
+                    // Pick Random Node but not taxi center
                     int[] exclude = {agent.vCity.taxiCenter};
                     int nextIndex = agent.pickRandomIntersectionIndex(agent.vCity.intersections, exclude);
                     Intersection intersection = agent.vCity.intersections.get(nextIndex);
@@ -77,7 +77,7 @@ public class ManageCallBehaviour extends Behaviour {
                     int destination = agent.pickRandomDropoffIndex(agent.vCity.dropoffPoints, exclude2);
 
                     //System.out.println("("+agent.runtime.toString()+")(Call " + agent.calls + ")");
-                    System.out.println("(" + agent.runtime.toString() + ")  Calling from Node " + intersection.index + " to " + destination);
+                    System.out.println("(" + agent.runtime.toString() + ")  Requesting ride from intersection " + intersection.index + " to " + destination);
                     agent.out("Call " + intersection.index);
 
                     // Send Request to available taxi
@@ -104,7 +104,7 @@ public class ManageCallBehaviour extends Behaviour {
                 //bestTaxi = new AID();
                 // Send the cfp to all sellers
                 if (doneProcess)
-                    System.out.println("(" + agent.runtime.toString() + ")  Sending request to all agents");
+                    System.out.println("(" + agent.runtime.toString() + ")  Sending request to all agents...");
                 ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
                 for (int i = 0; i < agent.lstTaxi.size(); ++i) {
                     cfp.addReceiver(agent.lstTaxi.get(i));
@@ -145,7 +145,7 @@ public class ManageCallBehaviour extends Behaviour {
                         }
 
                         // This is an offer
-                        System.out.println("(" + agent.runtime.toString() + ")  Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
+                        System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : Offering " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
 
                         assert response != null;
                         response.bidder = reply.getSender();
@@ -156,19 +156,14 @@ public class ManageCallBehaviour extends Behaviour {
                             System.exit(1);
                         }
                         if (responseList.get(reply.getSender().getLocalName()) == null) {
-                            System.out.println("not yet caught response");
                             System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
                             responseList.put(reply.getSender().getLocalName(), reply.getContent());
                         } else {
-                            if (responseList.get(reply.getSender().getLocalName()).equals(reply.getContent()))
-                                System.out.println("(" + agent.runtime.toString() + ")  reply duplicated");
-                            else {
-                                System.out.println("reply not caught");
+                            if (!responseList.get(reply.getSender().getLocalName()).equals(reply.getContent())) {
                                 System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
                                 responseList.put(reply.getSender().getLocalName(), reply.getContent());
                             }
                         }
-                        //System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
                     }
                     repliesCnt++;
                     //System.out.println("reply counts:"+repliesCnt);
