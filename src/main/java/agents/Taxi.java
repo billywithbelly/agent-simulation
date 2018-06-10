@@ -30,6 +30,7 @@ public class Taxi extends Agent {
     public boolean won_last_round;
     public int time_of_list_win;
     public Timer runtime;
+    private double wallet;
 
     protected void setup() {
         Object[] args = getArguments();
@@ -44,6 +45,7 @@ public class Taxi extends Agent {
         this.destination = null;
         this.won_last_round = false;
         this.time_of_list_win = 0;
+        this.wallet = 0.0;
         System.out.println("Taxi-agent " + getAID().getName() + "is online");
 //        testFunctionality();
         this.addBehaviour(new CheckStateBehavior(this));
@@ -144,4 +146,9 @@ public class Taxi extends Agent {
         request.bid = TaxiMethods.getBid(this.vCity, this, this.currentLocation, request);
         return request;
     }
+
+    public double getWallet(){
+        return this.wallet;
+    }
+
 }

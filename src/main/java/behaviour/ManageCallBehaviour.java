@@ -22,6 +22,10 @@ import java.util.Arrays;
 public class ManageCallBehaviour extends Behaviour {
     private AID bestTaxi = new AID(); // The agent who provides the best offer
     private double bestPrice; // The best offered price
+    private double companyPayoff;
+    private double taxiPayoff;
+    private double bestTaxiBid;
+    private int[] taxiPayoffList = new int[13];
     private int repliesCnt = 0; // The counter of replies from seller agents
     private MessageTemplate mt; // The template to receive replies
     private Activity activity = Activity.WAITING_FOR_CALLS;
@@ -137,7 +141,7 @@ public class ManageCallBehaviour extends Behaviour {
                             System.exit(1);
                         }
                         // This is an offer
-                        System.out.println("(" + agent.runtime.toString() + ") Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? response.bid.payOff : 0) + " NT");
+                        System.out.println("(" + agent.runtime.toString() + ") Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? response.bid.taxiBid : 0) + " NT");
 
                         assert response != null;
                         response.bidder = reply.getSender();
@@ -187,7 +191,9 @@ public class ManageCallBehaviour extends Behaviour {
                     break;
                 } else {
                     waiting_for_response = false;
-                    System.out.println("(" + agent.runtime.toString() + " Bid won by " + bestTaxi.getLocalName() + " : " + bestPrice);
+                    System.out.println("(" + agent.runtime.toString() + " Bid won by " + bestTaxi.getLocalName() + " : " + String.format( "%.2f", bestTaxiBid )+ " | CompanyPayoff : " + String.format( "%.2f", companyPayoff ) + " | TaxiPayoff : " + String.format( "%.2f", taxiPayoff ));
+                    taxiPayoffList[Integer.parseInt(bestTaxi.getLocalName())] += (int)taxiPayoff;
+                    System.out.println("TaxiPayoffList Array : " + Arrays.toString(taxiPayoffList));
                 }
                 // Sending confirmation to taxi for best offer
                 ACLMessage order = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
@@ -233,19 +239,19 @@ public class ManageCallBehaviour extends Behaviour {
     }
 
     private Boolean processBids() {
-        double lowestPayoff, secondLowestPayoff, lowestCo, secondLowestCo;
-        lowestPayoff = secondLowestPayoff = Integer.MAX_VALUE;
+        double lowestBid, secondLowestBid, lowestCo, secondLowestCo;
+        lowestBid = secondLowestBid = Integer.MAX_VALUE;
         lowestCo = secondLowestCo = Integer.MAX_VALUE;
 
         for (Request r : biddingList) {
-            if (r.bid.payOff < lowestPayoff && r.bid.payOff >= 0) {
-                secondLowestPayoff = lowestPayoff;
-                lowestPayoff = r.bid.payOff;
+            if (r.bid.taxiBid < lowestBid && r.bid.taxiBid >= 0) {
+                secondLowestBid = lowestBid;
+                lowestBid = r.bid.taxiBid;
                 lowestCo = r.bid.company;
                 bestTaxi = r.bidder;
                 lastBestRequest = r;
-            } else if (r.bid.payOff < secondLowestPayoff && r.bid.payOff != lowestPayoff && r.bid.payOff >= 0) {
-                secondLowestPayoff = r.bid.payOff;
+            } else if (r.bid.taxiBid < secondLowestBid && r.bid.taxiBid != lowestBid && r.bid.taxiBid >= 0) {
+                secondLowestBid = r.bid.taxiBid;
                 secondLowestCo = r.bid.company;
             }
         }
@@ -256,16 +262,16 @@ public class ManageCallBehaviour extends Behaviour {
         else
             secondLowestCo = 0;
 
-        if (secondLowestPayoff == Integer.MAX_VALUE && lowestPayoff != Integer.MAX_VALUE)
-            secondLowestPayoff = lowestPayoff;
+        if (secondLowestBid == Integer.MAX_VALUE && lowestBid != Integer.MAX_VALUE)
+            secondLowestBid = lowestBid;
         else
-            secondLowestPayoff = 0;
+            secondLowestBid = 0;
         // if bidding list is empty ---
 
 
-        if ((secondLowestCo - secondLowestPayoff) <= 0) {
+        if ((secondLowestCo - secondLowestBid) <= 0) {
             secondLowestCo = lowestCo;
-            secondLowestPayoff = lowestPayoff;
+            secondLowestBid = lowestBid;
         }
 
         if (lastBestRequest == null) {
@@ -275,14 +281,25 @@ public class ManageCallBehaviour extends Behaviour {
             System.exit(1);
             return false;
         }
-
+        /*
         lastBestRequest.bid.company = 0.3 * (secondLowestCo - secondLowestPayoff);
+        System.out.println("SecondLowestCo" + secondLowestCo);
+        System.out.println("SecondLowestPayoff" + secondLowestPayoff);
+        System.out.println("lastBestRequest.bid.company" + lastBestRequest.bid.company);
         // TODO figure out why payoff calculated like this
         //lastBestRequest.bid.payOff = secondLowestPayoff - lastBestRequest.bid.company;
-
+        */
+        //charge_rate_per_kilometer - gas_cost_per_kilometer
+        companyPayoff = 0.3*(60-4)*lastBestRequest.bid.chargeable_dist - secondLowestBid;
+        taxiPayoff = (60*lastBestRequest.bid.chargeable_dist) - companyPayoff - (4*lastBestRequest.bid.total_dist);
         lastBestRequest.bidder = bestTaxi;
-        bestPrice = lastBestRequest.bid.payOff;
+        bestTaxiBid = lowestBid;
+
+        //bestPrice = lastBestRequest.bid.taxiBid;
+
         biddingList.clear();
+        //System.out.println("I Have Arrived");
+
 
         // if the process is successful, return true
         return true;

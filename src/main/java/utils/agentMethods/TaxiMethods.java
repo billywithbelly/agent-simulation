@@ -16,8 +16,8 @@ import java.util.Date;
 public class TaxiMethods {
 
     public static final double SPEED = 30.0;
-    private static final double CHARGE_RATE_PER_KILOMETER = 40;
-    private static final double GAS_COST_PER_KILOMETER = 6;
+    private static final double CHARGE_RATE_PER_KILOMETER = 60;
+    private static final double GAS_COST_PER_KILOMETER = 4;
 
 
     /**
@@ -101,18 +101,21 @@ public class TaxiMethods {
         double chargeable_dist = getChargeableDistance(vCity, new Intersection(incomingRequest.origin.index), incomingRequest.destination);
 
 
-        result.payOff = (chargeable_dist * CHARGE_RATE_PER_KILOMETER) - (total_dist * GAS_COST_PER_KILOMETER);
+        result.taxiBid = (chargeable_dist * CHARGE_RATE_PER_KILOMETER) - (total_dist * GAS_COST_PER_KILOMETER);
         result.company = (CHARGE_RATE_PER_KILOMETER - GAS_COST_PER_KILOMETER) * chargeable_dist;
+        result.chargeable_dist = chargeable_dist;
+        result.total_dist = total_dist;
 
+        //maybe remove
         boolean markup = StdRandom.bernoulli(StdRandom.uniform());
         double multiplier = getBidMultiplier(taxi);
         double bid_scaler = StdRandom.uniform(0.01, 0.2);
 
-        result.payOff *= multiplier;
+        result.taxiBid *= multiplier;
         result.company *= multiplier;
-        bid_scaler *= result.payOff;
+        bid_scaler *= result.taxiBid;
         if (markup) {
-            result.payOff += bid_scaler;
+            result.taxiBid += bid_scaler;
             result.company += bid_scaler;
         }
         return result;
@@ -129,11 +132,11 @@ public class TaxiMethods {
     public static double getBidMultiplier(Taxi taxi) {
         int callsPerHour = (int) CallGen.getCallsPerHour(taxi.runtime.getDate());
         if (callsPerHour == 3)
-            return 1.5;
+            return 0.15;
         else if (callsPerHour == 2)
-            return 0.2;
+            return 0.02;
         else
-            return 2.0;
+            return 0.2;
     }
 
     /**

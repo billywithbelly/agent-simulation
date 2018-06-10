@@ -26,7 +26,7 @@ public class City {
 
     public EdgeWeightedGraph G;
     int totalCalls = 0;
-    public final int taxiCenter = 27;
+    public final int taxiCenter = 27; //Taxi Center at vertex #25
     public int totalPassengers = 0;
     public static double last_req_distance;
     public ArrayList<Intersection> intersections;

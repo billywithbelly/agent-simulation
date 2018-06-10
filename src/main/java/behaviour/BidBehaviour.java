@@ -50,6 +50,7 @@ public class BidBehaviour extends CyclicBehaviour {
                             Request bid = agent.bid(request);//THis should have the bid value
                             //Calculate biding
                             if (bid != null) {
+
                                 // The bid is available . Reply with the value
                                 reply.setPerformative(ACLMessage.PROPOSE);
                                 try {
