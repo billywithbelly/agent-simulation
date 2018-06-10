@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 
-/**
- * Created by eduardosalazar1 on 6/12/16.
- */
 public class BidBehaviour extends CyclicBehaviour {
     private final Taxi agent;
 

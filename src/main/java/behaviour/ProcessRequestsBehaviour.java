@@ -6,9 +6,6 @@ import city.Passenger;
 import city.Request;
 import jade.core.behaviours.Behaviour;
 
-/**
- * Created by jherez on 6/15/16.
- */
 class ProcessRequestsBehaviour extends Behaviour {
     private boolean endjob = false;
     private final Taxi agent;

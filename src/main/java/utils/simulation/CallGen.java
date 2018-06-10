@@ -5,9 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by eduardosalazar1 on 6/6/16.
- */
 public class CallGen {
     public static Date nextCall(Date current) {
         long curTimeInMs = current.getTime();

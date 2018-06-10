@@ -12,9 +12,6 @@ import utils.simulation.StdRandom;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by jherez on 6/12/16.
- */
 public class TaxiMethodsTest {
     private City vCity;
     private final In in = new In("src/main/resources/v_city.txt");

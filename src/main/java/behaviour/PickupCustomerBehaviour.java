@@ -4,9 +4,6 @@ import agents.Taxi;
 import city.Request;
 import jade.core.behaviours.Behaviour;
 
-/**
- * Created by jherez on 6/12/16.
- */
 class PickupCustomerBehaviour extends Behaviour {
 
     private boolean pickup = false;

@@ -105,7 +105,6 @@ public class ManageCallBehaviour extends Behaviour {
                 ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
                 for (int i = 0; i < agent.lstTaxi.size(); ++i) {
                     cfp.addReceiver(agent.lstTaxi.get(i));
-
                 }
                 try {
                     cfp.setContentObject(agent.lastRequest);
@@ -186,6 +185,7 @@ public class ManageCallBehaviour extends Behaviour {
                                 " to all the taxis again...");
                         System.out.println("Unable to get bid...\nLet's find the next passenger...");
                     }
+
                     activity = Activity.WAITING_FOR_CALLS;
 
                     //

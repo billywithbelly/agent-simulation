@@ -10,9 +10,6 @@ import utils.simulation.StdRandom;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by jherez on 6/11/16.
- */
 public class TaxiMethods {
 
     public static final double SPEED = 30.0;

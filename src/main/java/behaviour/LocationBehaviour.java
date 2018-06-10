@@ -10,9 +10,6 @@ import utils.shortestPath.Edge;
 import utils.shortestPath.Path;
 import utils.simulation.Timer;
 
-/**
- * Created by jherez on 6/12/16.
- */
 class LocationBehaviour extends Behaviour {
     private final Taxi agent;
     private final Intersection destination;

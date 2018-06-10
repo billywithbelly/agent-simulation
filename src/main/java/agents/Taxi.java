@@ -12,9 +12,6 @@ import utils.simulation.Timer;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * Created by jherez on 6/11/16.
- */
 public class Taxi extends Agent {
     private int index;
     public City vCity;
