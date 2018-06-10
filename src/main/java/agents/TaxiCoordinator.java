@@ -96,7 +96,7 @@ public class TaxiCoordinator extends Agent {
         intersection.receiveCall(passenger);
         this.passengerArrayList.add(passenger);
         this.vCity.passengerArrayList.add(passenger);
-        System.out.println("Received a call from Passenger " + passenger.id + "...");
+        System.out.println("[" + runtime.toString() + "]" + "  Received a call from Passenger " + passenger.id + "...");
     }
 
     public Date nextCall(Date currentTime) {

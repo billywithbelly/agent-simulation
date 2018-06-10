@@ -74,11 +74,12 @@ public class ManageCallBehaviour extends Behaviour {
                     City.last_req_distance = p.d;
                     agent.receiveCall(p, intersection);
 
-                    // Pick random destination
-                    int[] exclude2 = {agent.vCity.taxiCenter, nextIndex};
-                    int destination = agent.pickRandomDropoffIndex(agent.vCity.dropoffPoints, exclude2);
+                    int destination;
+                    do {
+                        destination = StdRandom.uniform(0, agent.vCity.intersections.size() - 1);
+                    } while (find(agent.vCity.intersections.get(destination).index, new int[]{agent.vCity.taxiCenter, nextIndex}));
 
-                    //System.out.println("("+agent.runtime.toString()+")(Call " + agent.calls + ")");
+
                     System.out.println("[" + agent.runtime.toString() + "]  Requesting ride from intersection " + intersection.index + " to " + destination);
                     agent.out("Call " + intersection.index);
 
@@ -86,7 +87,7 @@ public class ManageCallBehaviour extends Behaviour {
                     agent.lastRequest = new Request(agent.vCity.intersections.get(nextIndex), new Intersection(agent.vCity.dropoffPoints.get(destination).index), agent.calls);
                     sentRequest();
 
-                    // 6. Set next Time to call. ONly if step is 0 that means that is waiting for call
+                    // Set next Time to call. ONly if step is 0 that means that is waiting for call
                     if (activity == Activity.WAITING_FOR_CALLS) {
                         nextCall();
                     }
@@ -111,7 +112,6 @@ public class ManageCallBehaviour extends Behaviour {
         //System.out.println(activity.toString());
         switch (activity) {
             case WAITING_FOR_CALLS:
-                //bestTaxi = new AID();
                 // Send the cfp to all sellers
                 if (doneProcess)
                     System.out.println("[" + agent.runtime.toString() + "]  Sending request to all agents...");
@@ -155,7 +155,7 @@ public class ManageCallBehaviour extends Behaviour {
                         }
 
                         // This is an offer
-                        System.out.println("[" + agent.runtime.toString() + "]  Reply from " + reply.getSender().getLocalName() + " : Offering " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
+                        System.out.println("[" + agent.runtime.toString() + "]  Replying from  " + reply.getSender().getLocalName() + " : Offering " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
 
                         assert response != null;
                         response.bidder = reply.getSender();
@@ -166,11 +166,11 @@ public class ManageCallBehaviour extends Behaviour {
                             System.exit(1);
                         }
                         if (responseList.get(reply.getSender().getLocalName()) == null) {
-                            System.out.println("[" + agent.runtime.toString() + "]  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                            System.out.println("[" + agent.runtime.toString() + "]  Replying from  " + reply.getSender().getLocalName() + " : " + reply.getContent());
                             responseList.put(reply.getSender().getLocalName(), reply.getContent());
                         } else {
                             if (!responseList.get(reply.getSender().getLocalName()).equals(reply.getContent())) {
-                                System.out.println("[" + agent.runtime.toString() + "]  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                                System.out.println("[" + agent.runtime.toString() + "]  Replying from  " + reply.getSender().getLocalName() + " : " + reply.getContent());
                                 responseList.put(reply.getSender().getLocalName(), reply.getContent());
                             }
                         }
