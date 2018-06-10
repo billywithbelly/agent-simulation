@@ -1,1 +1,1 @@
-http://gaivns-mbp:7778/acc
+http://172.20.90.76:7778/acc

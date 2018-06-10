@@ -33,8 +33,8 @@ public class ManageCallBehaviour extends Behaviour {
     private Request lastBestRequest;
     private final ArrayList<Request> biddingList = new ArrayList<>();
     private ArrayList<AID> taxiInThisRound = new ArrayList<>();
-    private boolean actionSucceed = true;
     private boolean waiting_for_response = false;
+    private int totalCompanyPayoff = 0;
 
     public ManageCallBehaviour(TaxiCoordinator coordinator) {
         agent = coordinator;
@@ -55,7 +55,7 @@ public class ManageCallBehaviour extends Behaviour {
             }
 
             // 2 . Waiting for next call
-            if (activity == Activity.WAITING_FOR_CALLS && actionSucceed) {
+            if (activity == Activity.WAITING_FOR_CALLS) {
                 if (agent.isCallAvailable(agent.nextTime, agent.runtime.getDate())) {
                     // 3. Pick Random Node but not taxi center
                     int[] exclude = {agent.vCity.taxiCenter};
@@ -141,7 +141,7 @@ public class ManageCallBehaviour extends Behaviour {
                             System.exit(1);
                         }
                         // This is an offer
-                        System.out.println("(" + agent.runtime.toString() + ") Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? response.bid.taxiBid : 0) + " NT");
+                        System.out.println("(" + agent.runtime.toString() + ")  Offer: Reply from " + reply.getSender().getLocalName() + " : " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
 
                         assert response != null;
                         response.bidder = reply.getSender();
@@ -151,7 +151,8 @@ public class ManageCallBehaviour extends Behaviour {
                             System.out.println("Cannont find sender");
                             System.exit(1);
                         }
-                        System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent() + " NT");
+                        System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                        //System.out.println("this is the raw content="+reply.getContent());
                     }
                     repliesCnt++;
                     if (repliesCnt >= agent.lstTaxi.size()) {
@@ -180,20 +181,30 @@ public class ManageCallBehaviour extends Behaviour {
                      * that the taxi is simply not on duty instead of some other reasons,
                      * and force wake up a taxi under some method
                     */
-                    if (waiting_for_response) {
+                    if (!waiting_for_response) {
                         System.out.println("Cannot find best taxi, all taxis are busy...\nLet's send the request" +
                                 " to all the taxis again...");
                         System.out.println("Unable to get bid...\nLet's find the next passenger...");
                     }
                     activity = Activity.WAITING_FOR_CALLS;
-                    actionSucceed = false;
-                    waiting_for_response = true;
+
+                    //
+                    nextCall();
+                    repliesCnt = 0;
+                    bestPrice = 0;
+                    bestTaxi = null;
+                    activity = Activity.WAITING_FOR_CALLS;
+                    System.out.println("(" + agent.runtime.toString() + ")  ");
+                    //
+                    //waiting_for_response = true;
                     break;
                 } else {
                     waiting_for_response = false;
-                    System.out.println("(" + agent.runtime.toString() + " Bid won by " + bestTaxi.getLocalName() + " : " + String.format( "%.2f", bestTaxiBid )+ " | CompanyPayoff : " + String.format( "%.2f", companyPayoff ) + " | TaxiPayoff : " + String.format( "%.2f", taxiPayoff ));
+                    System.out.println("(" + agent.runtime.toString() + ")  Bid won by " + bestTaxi.getLocalName() + " : " + String.format( "%.2f", bestTaxiBid )+ " | CompanyPayoff : " + String.format( "%.2f", companyPayoff ) + " | TaxiPayoff : " + String.format( "%.2f", taxiPayoff ));
                     taxiPayoffList[Integer.parseInt(bestTaxi.getLocalName())] += (int)taxiPayoff;
-                    System.out.println("TaxiPayoffList Array : " + Arrays.toString(taxiPayoffList));
+
+                    System.out.println("            TaxiPayoffList Array: " + Arrays.toString(taxiPayoffList));
+                    System.out.println("            Total company payoff: " + totalCompanyPayoff);
                 }
                 // Sending confirmation to taxi for best offer
                 ACLMessage order = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
@@ -211,7 +222,6 @@ public class ManageCallBehaviour extends Behaviour {
                         MessageTemplate.MatchInReplyTo(order.getReplyWith()));
 
                 activity = Activity.WAITING_TAXI_CONFIRMATION;
-                actionSucceed = true;
                 //SEND MESSAGE TO CONFIRM BID ACCEPTED
                 break;
             case WAITING_TAXI_CONFIRMATION:
@@ -291,6 +301,7 @@ public class ManageCallBehaviour extends Behaviour {
         */
         //charge_rate_per_kilometer - gas_cost_per_kilometer
         companyPayoff = 0.3*(60-4)*lastBestRequest.bid.chargeable_dist - secondLowestBid;
+        totalCompanyPayoff += companyPayoff;
         taxiPayoff = (60*lastBestRequest.bid.chargeable_dist) - companyPayoff - (4*lastBestRequest.bid.total_dist);
         lastBestRequest.bidder = bestTaxi;
         bestTaxiBid = lowestBid;

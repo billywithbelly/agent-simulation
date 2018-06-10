@@ -23,7 +23,7 @@ class PickupCustomerBehaviour extends Behaviour {
     public void action() {
         if (!pickup) {
             this.agent.addRequestToQueue(request);
-            System.out.println("(" + agent.runtime.toString() + ") <--- Taxi " + agent.getLocalName() + ": Adding Passenger " + this.request.passengerID + " to queue");
+            System.out.println("(" + agent.runtime.toString() + ")  <--- Taxi " + agent.getLocalName() + ": Adding Passenger " + this.request.passengerID + " to queue");
             pickup = true;
         }
     }

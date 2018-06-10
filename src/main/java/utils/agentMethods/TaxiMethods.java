@@ -132,11 +132,11 @@ public class TaxiMethods {
     public static double getBidMultiplier(Taxi taxi) {
         int callsPerHour = (int) CallGen.getCallsPerHour(taxi.runtime.getDate());
         if (callsPerHour == 3)
-            return 0.15;
-        else if (callsPerHour == 2)
-            return 0.02;
-        else
             return 0.2;
+        else if (callsPerHour == 2)
+            return 0.1;
+        else
+            return 0.02;
     }
 
     /**
