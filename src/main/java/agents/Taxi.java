@@ -67,7 +67,7 @@ public class Taxi extends Agent {
 
     public void checkStatus() {
         int elapsed = getElapsed();
-        boolean stat = getShitfStatus(elapsed);
+        boolean stat = getShiftStatus(elapsed);
         if (stat) {
             if (!this.on_duty) {
                 this.on_duty = true;
@@ -88,7 +88,7 @@ public class Taxi extends Agent {
         }
     }
 
-    public boolean getShitfStatus(int seconds) {
+    public boolean getShiftStatus(int seconds) {
         seconds = (seconds % (60 * 60 * 24));
         boolean on_duty = false;
 

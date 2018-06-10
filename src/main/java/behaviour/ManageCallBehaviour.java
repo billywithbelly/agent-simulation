@@ -9,6 +9,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import utils.misc.Activity;
+import utils.simulation.StdRandom;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -60,25 +61,25 @@ public class ManageCallBehaviour extends Behaviour {
             if (activity == Activity.WAITING_FOR_CALLS && doneProcess) {
 
                 if (agent.nextTime != null && agent.nextTime.before(agent.runtime.getDate())) {
+                    System.out.println("\n---------------------------------------------------------------------------------------");
                     // Pick Random Node but not taxi center
-                    int[] exclude = {agent.vCity.taxiCenter};
-                    int nextIndex = agent.pickRandomIntersectionIndex(agent.vCity.intersections, exclude);
+                    int nextIndex;
+                    do {
+                        nextIndex = StdRandom.uniform(0, agent.vCity.intersections.size() - 1);
+                    } while (find(agent.vCity.intersections.get(nextIndex).index, new int[]{agent.vCity.taxiCenter}));
                     Intersection intersection = agent.vCity.intersections.get(nextIndex);
 
-                    // 4. Receive call
-                    System.out.println("---------------------------------------------------------------------------------------");
                     Passenger p = new Passenger(intersection, agent.calls++);
                     agent.vCity.totalPassengers++;
                     City.last_req_distance = p.d;
                     agent.receiveCall(p, intersection);
-                    // 5. DO ACTION PROCESS HERE
 
                     // Pick random destination
                     int[] exclude2 = {agent.vCity.taxiCenter, nextIndex};
                     int destination = agent.pickRandomDropoffIndex(agent.vCity.dropoffPoints, exclude2);
 
                     //System.out.println("("+agent.runtime.toString()+")(Call " + agent.calls + ")");
-                    System.out.println("(" + agent.runtime.toString() + ")  Requesting ride from intersection " + intersection.index + " to " + destination);
+                    System.out.println("[" + agent.runtime.toString() + "]  Requesting ride from intersection " + intersection.index + " to " + destination);
                     agent.out("Call " + intersection.index);
 
                     // Send Request to available taxi
@@ -98,6 +99,14 @@ public class ManageCallBehaviour extends Behaviour {
         }
     }
 
+    private boolean find(int index, int[] array) {
+        for (int i : array) {
+            if (i == index)
+                return true;
+        }
+        return false;
+    }
+
     private void sentRequest() {
         //System.out.println(activity.toString());
         switch (activity) {
@@ -105,7 +114,7 @@ public class ManageCallBehaviour extends Behaviour {
                 //bestTaxi = new AID();
                 // Send the cfp to all sellers
                 if (doneProcess)
-                    System.out.println("(" + agent.runtime.toString() + ")  Sending request to all agents...");
+                    System.out.println("[" + agent.runtime.toString() + "]  Sending request to all agents...");
                 ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
                 for (int i = 0; i < agent.lstTaxi.size(); ++i) {
                     cfp.addReceiver(agent.lstTaxi.get(i));
@@ -146,7 +155,7 @@ public class ManageCallBehaviour extends Behaviour {
                         }
 
                         // This is an offer
-                        System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : Offering " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
+                        System.out.println("[" + agent.runtime.toString() + "]  Reply from " + reply.getSender().getLocalName() + " : Offering " + (response != null ? (int)response.bid.taxiBid : 0) + " NT");
 
                         assert response != null;
                         response.bidder = reply.getSender();
@@ -157,11 +166,11 @@ public class ManageCallBehaviour extends Behaviour {
                             System.exit(1);
                         }
                         if (responseList.get(reply.getSender().getLocalName()) == null) {
-                            System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                            System.out.println("[" + agent.runtime.toString() + "]  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
                             responseList.put(reply.getSender().getLocalName(), reply.getContent());
                         } else {
                             if (!responseList.get(reply.getSender().getLocalName()).equals(reply.getContent())) {
-                                System.out.println("(" + agent.runtime.toString() + ")  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
+                                System.out.println("[" + agent.runtime.toString() + "]  Reply from " + reply.getSender().getLocalName() + " : " + reply.getContent());
                                 responseList.put(reply.getSender().getLocalName(), reply.getContent());
                             }
                         }
@@ -199,7 +208,7 @@ public class ManageCallBehaviour extends Behaviour {
                     break;
                 } else {
                     waiting_for_response = false;
-                    System.out.println("(" + agent.runtime.toString() + ")  Bid won by " + bestTaxi.getLocalName() + " : " + String.format( "%.2f", bestTaxiBid )+ " | CompanyPayoff : " + String.format( "%.2f", companyPayoff ) + " | TaxiPayoff : " + String.format( "%.2f", taxiPayoff ));
+                    System.out.println("[" + agent.runtime.toString() + "]  Bid won by " + bestTaxi.getLocalName() + " : " + String.format( "%.2f", bestTaxiBid )+ " | CompanyPayoff : " + String.format( "%.2f", companyPayoff ) + " | TaxiPayoff : " + String.format( "%.2f", taxiPayoff ));
                     taxiPayoffList[Integer.parseInt(bestTaxi.getLocalName())] += (int)taxiPayoff;
                     totalCompanyPayoff += currentCompanyPayoff;
                     currentCompanyPayoff = 0.0;
@@ -238,7 +247,7 @@ public class ManageCallBehaviour extends Behaviour {
                             bestTaxi = null;
                             activity = Activity.WAITING_FOR_CALLS;
                             responseList.clear();
-                            System.out.println("(" + agent.runtime.toString() + ")  ");
+                            System.out.println("[" + agent.runtime.toString() + "]  ");
                             break;
                         case ACLMessage.DISCONFIRM:
                             System.out.println("Error allocation job");

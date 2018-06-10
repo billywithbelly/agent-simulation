@@ -33,17 +33,17 @@ class LocationBehaviour extends Behaviour {
         }
         this.agent.activity = Activity.TRANSPORTING_PASSENGER;
 
-        System.out.println("(" + agent.runtime.toString() + ")  " + this.agent.getLocalName() + " travelling from " + origin.index +
+        System.out.println("[" + agent.runtime.toString() + "]  " + this.agent.getLocalName() + " travelling from " + origin.index +
         " to " + destination.index + ", total distance: " + String.valueOf(path.weight));
         String dumpPath = "  [";
         for (int i=path.list.size()-1; i>=0; i--)
             if (i == path.list.size()-1)
-                dumpPath += "" + path.list.get(i).toString() + "\n";
+                dumpPath += "" + path.list.get(i).toString() + ",\n";
             else if (i == 0)
-                dumpPath += "            " + path.list.get(i).toString() + "]";
+                dumpPath += "             " + path.list.get(i).toString() + "]";
             else
-                dumpPath += "            " + path.list.get(i).toString() + "\n";
-        System.out.println("(" + agent.runtime.toString() + ")" + dumpPath);
+                dumpPath += "             " + path.list.get(i).toString() + ",\n";
+        System.out.println("[" + agent.runtime.toString() + "]" + dumpPath);
 
         //+ path.list.toString();
         //msg += " for a distance of " + path.weight;
@@ -66,7 +66,7 @@ class LocationBehaviour extends Behaviour {
     @Override
     public boolean done() {
         if (this.agent.currentLocation == this.destination) {
-            System.out.println("(" + agent.runtime.toString() + ")  Taxi " + agent.getLocalName() + ": Arrived at " + this.destination.index);
+            System.out.println("[" + agent.runtime.toString() + "]  Taxi " + agent.getLocalName() + ": Arrived at " + this.destination.index);
             return true;
         }
         return false;

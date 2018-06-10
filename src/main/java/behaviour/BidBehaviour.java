@@ -100,9 +100,9 @@ public class BidBehaviour extends CyclicBehaviour {
     private boolean getBidAvailability(Taxi taxi, Request request) {
         boolean result = false;
         boolean can_bid = true;
-        if (taxi.getShitfStatus(taxi.getElapsed())) {
+        if (taxi.getShiftStatus(taxi.getElapsed())) {
             int jobTime = TaxiMethods.getJobCompletionTime(this.agent.vCity, this.agent, request);
-            result = taxi.getShitfStatus((jobTime * 60 * 60) + TaxiMethods.timeToSecond(taxi.runtime.getDate()));
+            result = taxi.getShiftStatus((jobTime * 60 * 60) + TaxiMethods.timeToSecond(taxi.runtime.getDate()));
         }
         int time_for_last_distance = (int) ((City.last_req_distance / TaxiMethods.SPEED) * 60 * 60);
         if (TaxiMethods.timeToSecond(taxi.runtime.getDate()) < this.agent.time_of_list_win + time_for_last_distance) {
