@@ -35,6 +35,7 @@ public class ManageCallBehaviour extends Behaviour {
     private ArrayList<AID> taxiInThisRound = new ArrayList<>();
     private boolean waiting_for_response = false;
     private double totalCompanyPayoff = 0.0;
+    private double currentCompanyPayoff = 0.0;
     private boolean doneProcess = true;
     private Map<String, String> responseList = new HashMap<>();
 
@@ -195,19 +196,13 @@ public class ManageCallBehaviour extends Behaviour {
                     activity = Activity.WAITING_FOR_CALLS;
                     waiting_for_response = true;
                     doneProcess = false;
-                    /*
-                    nextCall();
-                    repliesCnt = 0;
-                    bestPrice = 0;
-                    bestTaxi = null;
-                    activity = Activity.WAITING_FOR_CALLS;
-                    System.out.println("(" + agent.runtime.toString() + ")  ");
-                    */
                     break;
                 } else {
                     waiting_for_response = false;
                     System.out.println("(" + agent.runtime.toString() + ")  Bid won by " + bestTaxi.getLocalName() + " : " + String.format( "%.2f", bestTaxiBid )+ " | CompanyPayoff : " + String.format( "%.2f", companyPayoff ) + " | TaxiPayoff : " + String.format( "%.2f", taxiPayoff ));
                     taxiPayoffList[Integer.parseInt(bestTaxi.getLocalName())] += (int)taxiPayoff;
+                    totalCompanyPayoff += currentCompanyPayoff;
+                    currentCompanyPayoff = 0.0;
 
                     System.out.println("            TaxiPayoffList Array: " + Arrays.toString(taxiPayoffList));
                     System.out.println("            Total company payoff: " + String.format( "%.2f", totalCompanyPayoff));
@@ -309,7 +304,8 @@ public class ManageCallBehaviour extends Behaviour {
         */
         //charge_rate_per_kilometer - gas_cost_per_kilometer
         companyPayoff = 0.3*(60-4)*lastBestRequest.bid.chargeable_dist - secondLowestBid;
-        totalCompanyPayoff += companyPayoff;
+        currentCompanyPayoff = companyPayoff;
+
         taxiPayoff = (60*lastBestRequest.bid.chargeable_dist) - companyPayoff - (4*lastBestRequest.bid.total_dist);
         lastBestRequest.bidder = bestTaxi;
         bestTaxiBid = lowestBid;

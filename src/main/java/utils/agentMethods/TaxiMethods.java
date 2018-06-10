@@ -17,12 +17,7 @@ public class TaxiMethods {
     private static final double GAS_COST_PER_KILOMETER = 4;
 
 
-    /**
-     * Converts a date object to seconds
-     *
-     * @param current
-     * @return the distance
-     */
+    // Converts a date object to seconds
     public static int timeToSecond(Date current) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(current);
@@ -32,31 +27,13 @@ public class TaxiMethods {
         return (hour * 60 * 60) + (minute * 60) + (second);
     }
 
-    /**
-     * Returns the shortest travel distance
-     * Considers the cost of the taxi agent travelling from &currentTaxiLocaiton; to the customer location
-     * &incomingRequest;
-     *
-     * @param vCity               City.
-     * @param currentTaxiLocation Intersection
-     * @param incomingRequest     Request see {@link Intersection}
-     * @return the distance
-     */
+    // Returns the shortest travel distance
     private static double getChargeableDistance(City vCity, Intersection currentTaxiLocation, Intersection incomingRequest) {
         DijkstraUndirectedSP destination_sp = vCity.getShortestPaths(vCity.G, currentTaxiLocation.index);
         return destination_sp.distTo(incomingRequest.index);
     }
 
-    /**
-     * Calculates the total travel distance for an incoming request &incomingRequest;
-     * Considers the cost of the taxi agent travelling to the customer location &incomingrequest.origin.index;
-     * from their current position &currentTaxiLocaiton; to &incomingRequest.destination.index;
-     *
-     * @param vCity               City.
-     * @param currentTaxiLocation Intersection
-     * @param incomingRequest     Request see {@link Request}
-     * @return the distance
-     */
+    // Calculates the total travel distance for an incoming request &incomingRequest;
     public static double getTotalTravelDistance(City vCity, Intersection currentTaxiLocation, Request incomingRequest) {
         double distance = 0;
         // Return a shortest path graph with the current taxi location as source node
@@ -68,19 +45,7 @@ public class TaxiMethods {
         return distance;
     }
 
-    /**
-     * Calculate the bid for an incoming request &incoming_request;
-     * Considers whether the taxi currently has a passenger and needs to complete that job
-     * before taking another. Iterates through the list of pending jobs and sums their total time
-     * the bidding location is set to either the current taxi location if they are not processing a job
-     * or to the destination of the job last processed
-     *
-     * @param vCity               City see {@link City}
-     * @param taxi                Taxi see {@link Taxi}
-     * @param currentTaxiLocation Intersection see {@Link Intersection}
-     * @param incomingRequest     Request see {@link Request}
-     * @return the bid
-     */
+    // Calculate the bid for an incoming request &incoming_request;
     public static Bid getBid(City vCity, Taxi taxi, Intersection currentTaxiLocation, Request incomingRequest) {
         Bid result = new Bid();
         double request_queue_time = 0;
@@ -118,13 +83,11 @@ public class TaxiMethods {
         return result;
     }
 
-    /**
+    /*
      * Returns a bid multiplier based on the time of the day. When the calls per hour
      * is at it's lowest, we return the highest multiplier
      * Considers the time of the day and the associated calls per hour
-     *
-     * @param taxi Taxi see {@link Taxi}
-     * @return a multiplier based on the set lambda
+
      */
     public static double getBidMultiplier(Taxi taxi) {
         int callsPerHour = (int) CallGen.getCallsPerHour(taxi.runtime.getDate());

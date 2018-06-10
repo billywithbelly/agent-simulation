@@ -32,11 +32,23 @@ class LocationBehaviour extends Behaviour {
             path.list.add(e);
         }
         this.agent.activity = Activity.TRANSPORTING_PASSENGER;
-        String msg = "(" + agent.runtime.toString() + ")  " + this.agent.getLocalName() + " travelling from " + origin.index;
-        msg += " to " + destination.index + " via " + path.list.toString();
-        msg += " for a distance of " + path.weight;
 
-        System.out.println(msg);
+        System.out.println("(" + agent.runtime.toString() + ")  " + this.agent.getLocalName() + " travelling from " + origin.index +
+        " to " + destination.index + ", total distance: " + String.valueOf(path.weight));
+        String dumpPath = "  [";
+        for (int i=path.list.size()-1; i>=0; i--)
+            if (i == path.list.size()-1)
+                dumpPath += "" + path.list.get(i).toString() + "\n";
+            else if (i == 0)
+                dumpPath += "            " + path.list.get(i).toString() + "]";
+            else
+                dumpPath += "            " + path.list.get(i).toString() + "\n";
+        System.out.println("(" + agent.runtime.toString() + ")" + dumpPath);
+
+        //+ path.list.toString();
+        //msg += " for a distance of " + path.weight;
+
+        //System.out.println(msg);
         this.jobTime = TaxiMethods.getTotalTravelDistance(this.agent.vCity, this.agent.currentLocation, this.agent.confirmed_request);
         this.jobTime = (int) ((this.jobTime / TaxiMethods.SPEED) * 60 * 60);
     }

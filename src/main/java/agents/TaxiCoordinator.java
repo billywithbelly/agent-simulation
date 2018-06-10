@@ -149,14 +149,13 @@ public class TaxiCoordinator extends Agent {
     }
 
     private void addTaxi(Intersection point, Shift shift) {
-        Object[] params = {this.vCity, point, shift, numOffTaxi + 1, runtime};
+        Object[] params = {this.vCity, point, shift, numOffTaxi, runtime};
         ContainerController cc = getContainerController();
 
         try {
-            numOffTaxi++;
             AgentController new_agent = cc.createNewAgent(String.valueOf(numOffTaxi), "agents.Taxi", params);
             new_agent.start();
-            lstTaxi.add(new AID(String.valueOf(numOffTaxi), AID.ISLOCALNAME));
+            lstTaxi.add(new AID(String.valueOf(numOffTaxi++), AID.ISLOCALNAME));
         } catch (StaleProxyException ex) {
             Logger.getLogger(TaxiCoordinator.class.getName()).log(Level.WARNING, null, ex);
         }

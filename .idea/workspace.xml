@@ -4,20 +4,18 @@
     <list default="true" id="daf20816-95ed-4110-82c6-1ef1ca278ee9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/agents/TaxiCoordinator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/agents/TaxiCoordinator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/LocationBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/LocationBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/ManageCallBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/PickupCustomerBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/PickupCustomerBehaviour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/behaviour/ProcessRequestsBehaviour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/behaviour/ProcessRequestsBehaviour.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/utils/agentMethods/TaxiMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/utils/agentMethods/TaxiMethods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/PickupCustomerBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/PickupCustomerBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behaviour/ProcessRequestsBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behaviour/ProcessRequestsBehaviour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/JunitTestSuite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/city/CityTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/city/PassengerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/agentMethods/TaxiMethodsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/simulation/CallGenTest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -49,17 +47,17 @@
       <file leaf-file-name="ManageCallBehaviour.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="114" column="39" lean-forward="true" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
+            <state relative-caret-position="940">
+              <caret line="204" column="47" selection-start-line="204" selection-start-column="47" selection-end-line="204" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationBehaviour.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LocationBehaviour.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
+            <state relative-caret-position="444">
+              <caret line="42" column="77" selection-start-line="42" selection-start-column="77" selection-end-line="42" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -67,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaxiCoordinator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TaxiCoordinator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="108">
+              <caret line="32" column="26" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="26" />
               <folding>
                 <element signature="e#2538#2539#0" expanded="true" />
                 <element signature="e#2590#2591#0" expanded="true" />
@@ -80,33 +78,29 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CallGen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/simulation/CallGen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-281">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="City.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/city/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="292" column="28" selection-start-line="292" selection-start-column="28" selection-end-line="292" selection-end-column="28" />
+            <state relative-caret-position="174">
+              <caret line="302" column="32" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageTemplate.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/lang/acl/MessageTemplate.class">
+      <file leaf-file-name="TaxiMethods.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2666">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Behaviour.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/behaviours/Behaviour.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="144" column="16" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
-              <folding>
-                <element signature="e#3771#3772#0" expanded="true" />
-                <element signature="e#3810#3811#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="92" column="44" lean-forward="true" selection-start-line="92" selection-start-column="44" selection-end-line="92" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -115,9 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cannot</find>
-      <find>repliesCnt</find>
-      <find>askin</find>
       <find>asking</find>
       <find>bargainResult</find>
       <find>size</find>
@@ -134,7 +125,6 @@
       <find>totalCompanyPayoff</find>
       <find>setup</find>
       <find>getfin</find>
-      <find>runtime</find>
       <find>%.2</find>
       <find>not yet</find>
       <find>total</find>
@@ -143,8 +133,12 @@
       <find>calling from</find>
       <find>sending</find>
       <find>---&gt;</find>
-      <find>recei</find>
       <find>&lt;---</find>
+      <find>finished</find>
+      <find>recei</find>
+      <find>runtime</find>
+      <find>bestta</find>
+      <find>numOffTaxi</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -455,13 +449,13 @@
         <option value="$PROJECT_DIR$/src/main/java/city/Bid.java" />
         <option value="$PROJECT_DIR$/src/main/java/agents/Taxi.java" />
         <option value="$PROJECT_DIR$/src/main/java/behaviour/BidBehaviour.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/misc/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/java/city/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/city/City.java" />
-        <option value="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java" />
         <option value="$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java" />
+        <option value="$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java" />
       </list>
     </option>
   </component>
@@ -486,6 +480,36 @@
               <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
               <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taxi-coordinator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="market-oriented-auction" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="agentMethods" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -928,13 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/agents/Taxi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -969,13 +986,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/simulation/CallGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="35" column="7" lean-forward="true" selection-end-line="96" />
         </state>
       </provider>
     </entry>
@@ -1015,24 +1025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/behaviours/Behaviour.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="144" column="16" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
-          <folding>
-            <element signature="e#3771#3772#0" expanded="true" />
-            <element signature="e#3810#3811#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/lang/acl/MessageTemplate.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2666">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/Agent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1057,37 +1049,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/city/City.java">
+    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/lang/acl/MessageTemplate.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="292" column="28" selection-start-line="292" selection-start-column="28" selection-end-line="292" selection-end-column="28" />
+        <state relative-caret-position="-2666">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java">
+    <entry file="jar://$PROJECT_DIR$/libs/jade.jar!/jade/core/behaviours/Behaviour.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+        <state relative-caret-position="124">
+          <caret line="144" column="16" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
           <folding>
-            <element signature="e#2538#2539#0" expanded="true" />
-            <element signature="e#2590#2591#0" expanded="true" />
+            <element signature="e#3771#3772#0" expanded="true" />
+            <element signature="e#3810#3811#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/city/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="302" column="32" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/agentMethods/TaxiMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="92" column="44" lean-forward="true" selection-start-line="92" selection-start-column="44" selection-end-line="92" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/simulation/CallGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-281">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="42" column="77" selection-start-line="42" selection-start-column="77" selection-end-line="42" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/ManageCallBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="114" column="39" lean-forward="true" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
+        <state relative-caret-position="940">
+          <caret line="204" column="47" selection-start-line="204" selection-start-column="47" selection-end-line="204" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/behaviour/LocationBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/agents/TaxiCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
+        <state relative-caret-position="108">
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2538#2539#0" expanded="true" />
+            <element signature="e#2590#2591#0" expanded="true" />
           </folding>
         </state>
       </provider>
